@@ -1,3 +1,22 @@
+/**
+ * Класс Solver предназначен для вычисления арифметического выражения
+ * в строковом формате.
+ * Выражение должно содержать операнды (числа) и операции: + - * /.
+ * Можно использовать скобки и пробелы.
+ *
+ * Алгоритм реализации основывается на применении двух стеков – один для операций,
+ * другой для операндов – для того чтобы сохранить порядок операций.
+ *
+ * Пример использования:
+ * Solver solver = new Solver();
+ * Optional<Double> result = solver.solve("2 * (3 + 5) / 8");
+ * if (result.isPresent()) {
+ *     System.out.println(result.get()); // Результат выражения "2"
+ * } else {
+ *     System.out.println("Не удалось вычислить выражение");
+ * }
+ */
+
 import java.util.EmptyStackException;
 import java.util.Optional;
 import java.util.Stack;
@@ -6,6 +25,14 @@ public final class Solver {
 
     private final Stack<Character> operators = new Stack<>();
     private final Stack<Double> numbers = new Stack<>();
+
+    /**
+     * Метод solve осуществляет вычисление арифметического выражения в строковом формате.
+     *
+     * @param expression - строка, содержащая арифметическое выражение для вычисления.
+     * @return Опциональное значение с результатом вычисления, либо пустое значение
+     * в случае, если выражение не может быть вычислено.
+     */
 
     public Optional<Double> solve(String expression) {
         Optional<Double> result;
